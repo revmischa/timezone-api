@@ -22,7 +22,7 @@ def handler(event, context):
         if geoip.country:
             country = geoip.country.iso_code
 
-    tzs: TZList = common_timezones_useful(country=country)
+    tzs = common_timezones_useful(country=country)
 
     # add field for searching on
     for tz in tzs:
