@@ -13,7 +13,7 @@ def handler(event, context):
     country = ""
     tz_guess = ""
 
-    params = event['queryStringParameters']
+    params = event['queryStringParameters'] or {}
     restrict_to_country = 'country_restrict' in params and params['country_restrict']  # should we only show timezones from this country
 
     if geoip:
