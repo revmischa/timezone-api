@@ -18,9 +18,9 @@ def handler(event, context):
 
     if geoip:
         if geoip['location']:
-            tz_guess = geoip['location'].time_zone
-        if geoip['country']:
-            country = geoip['country'].iso_code
+            tz_guess = geoip['location']['time_zone']
+        if geoip['country'] and restrict_to_country:
+            country = geoip['country']['iso_code']
 
     tzs = common_timezones_useful(country=country)
 

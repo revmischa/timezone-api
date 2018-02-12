@@ -18,7 +18,7 @@
       "cognitoIdentityPoolId": null,
       "cognitoIdentityId": null,
       "cognitoAuthenticationProvider": null,
-      "sourceIp": "127.0.0.1",
+      "sourceIp": "23.45.67.89",
       "accountId": null
     },
     "stage": "prod"
