@@ -17,10 +17,10 @@ def handler(event, context):
     restrict_to_country = 'country_restrict' in params and params['country_restrict']  # should we only show timezones from this country
 
     if geoip:
-        if geoip.location:
-            tz_guess = geoip.location.time_zone
-        if geoip.country:
-            country = geoip.country.iso_code
+        if geoip['location']:
+            tz_guess = geoip['location'].time_zone
+        if geoip['country']:
+            country = geoip['country'].iso_code
 
     tzs = common_timezones_useful(country=country)
 
