@@ -1,5 +1,5 @@
 import json
-from timezones import common_timezones_useful, TZList  # noqa
+from timezones import common_timezones_useful
 from geolite2 import geolite2
 
 
@@ -14,7 +14,7 @@ def handler(event, context):
     tz_guess = ""
 
     params = event['queryStringParameters']
-    restrict_to_country = False  # should we only show timezones from this country
+    restrict_to_country = 'country_restrict' in params and params['country_restrict']  # should we only show timezones from this country
 
     if geoip:
         if geoip.location:
