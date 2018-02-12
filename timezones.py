@@ -1,11 +1,8 @@
 import pytz
-from typing import List, Dict
 import logging
 
 
 log = logging.getLogger(__name__)
-
-TZList = List[Dict[str, str]]
 
 def tz_is_valid(tz):
     try:
@@ -48,7 +45,7 @@ tzlist_basic = [
 ]
 
 # has actual human-friendly display names
-tzlist_useful: TZList = [{'capital': 'Andorra la Vella',
+tzlist_useful = [{'capital': 'Andorra la Vella',
            'code': 'AD',
            'continent': 'Europe',
            'country_name': 'Andorra',
@@ -2009,20 +2006,20 @@ tzlist_useful: TZList = [{'capital': 'Andorra la Vella',
 for tz in tzlist_useful:
     tz['name'] = tz['name'].replace('_', ' ')
 
-def common_timezones_useful(country: str=None, keep: str=None) -> TZList:
+def common_timezones_useful(country=None, keep=None):
     """Get a list of common timezones with useful metadata (see tzlist)."""
-    tzs: TZList = tzlist_useful
+    tzs = tzlist_useful
 
     keep_tz = None
     if keep:
-        ktzl: TZList = [t for t in tzs if t['value'] == keep]
+        ktzl = [t for t in tzs if t['value'] == keep]
         if ktzl:
             keep_tz = ktzl[0]
         else:
             log.error(f"common_timezones_useful asked to preserve invalid time zone name {keep}")
 
     # filter by common
-    common_set: set = pytz.common_timezones_set
+    common_set = pytz.common_timezones_set
     tzs = [tz for tz in tzs if tz['value'] in common_set]
 
     # filter by country if specified
