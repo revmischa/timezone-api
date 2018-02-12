@@ -10,11 +10,11 @@ def handler(event, context):
     geoip = reader.get(ip)
 
     # try to get user's country
-    country: str = None
-    tz_guess: str = None
+    country = ""
+    tz_guess = ""
 
     params = event['queryStringParameters']
-    restrict_to_country: bool = False  # should we only show timezones from this country
+    restrict_to_country = False  # should we only show timezones from this country
 
     if geoip:
         if geoip.location:
@@ -26,8 +26,8 @@ def handler(event, context):
 
     # add field for searching on
     for tz in tzs:
-        cc: str = tz['code']
-        searchable: str = f"{tz['country_name']} {tz['name']} {tz['continent']}"
+        cc = tz['code']
+        searchable = f"{tz['country_name']} {tz['name']} {tz['continent']}"
         if cc == 'US':
             # make 'USA' work
             searchable += " usa"
